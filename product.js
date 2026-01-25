@@ -9,21 +9,27 @@ function Product(id, name, price, quantity, category, isAvailable) {
     this.isAvailable = isAvailable;   // trạng thái bán (true/false)
 }
 
-// ========== VÍ DỤ SỬ DỤNG ==========
+// ========== CÂU 2: Khởi tạo mảng products ==========
+// Gồm ít nhất 6 sản phẩm, thuộc tối thiểu 2 danh mục khác nhau
 
-// Tạo các đối tượng sản phẩm mới
-let product1 = new Product(1, "Laptop Dell", 25000000, 10, "Điện tử", true);
-let product2 = new Product(2, "Áo thun", 150000, 50, "Thời trang", true);
-let product3 = new Product(3, "Tai nghe Sony", 500000, 0, "Điện tử", false);
+let products = [
+    new Product(1, "Laptop Dell XPS 15", 35000000, 10, "Điện tử", true),
+    new Product(2, "iPhone 15 Pro Max", 32000000, 25, "Điện tử", true),
+    new Product(3, "Tai nghe Sony WH-1000XM5", 8500000, 0, "Điện tử", false),
+    new Product(4, "Áo thun Uniqlo", 299000, 100, "Thời trang", true),
+    new Product(5, "Quần jeans Levis", 1500000, 45, "Thời trang", true),
+    new Product(6, "Giày Nike Air Max", 3200000, 30, "Thời trang", true),
+    new Product(7, "Nồi cơm điện Philips", 1200000, 15, "Gia dụng", true),
+    new Product(8, "Máy xay sinh tố", 850000, 0, "Gia dụng", false)
+];
 
-// Hiển thị thông tin sản phẩm
-console.log("=== Danh sách sản phẩm ===");
-console.log(product1);
-console.log(product2);
-console.log(product3);
-
-// Truy xuất thuộc tính
-console.log("\n=== Truy xuất thuộc tính ===");
-console.log("Tên sản phẩm 1:", product1.name);
-console.log("Giá sản phẩm 2:", product2.price);
-console.log("Trạng thái sản phẩm 3:", product3.isAvailable);
+// Hiển thị danh sách sản phẩm
+console.log("=== DANH SÁCH SẢN PHẨM ===\n");
+products.forEach(function (product, index) {
+    console.log(`${index + 1}. ${product.name}`);
+    console.log(`   - Giá: ${product.price.toLocaleString('vi-VN')} VNĐ`);
+    console.log(`   - Tồn kho: ${product.quantity}`);
+    console.log(`   - Danh mục: ${product.category}`);
+    console.log(`   - Trạng thái: ${product.isAvailable ? "Đang bán" : "Hết hàng"}`);
+    console.log("");
+});
