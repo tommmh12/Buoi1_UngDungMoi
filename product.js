@@ -20,7 +20,9 @@ let products = [
     new Product(5, "Quần jeans Levis", 1500000, 45, "Thời trang", true),
     new Product(6, "Giày Nike Air Max", 3200000, 30, "Thời trang", true),
     new Product(7, "Nồi cơm điện Philips", 1200000, 15, "Gia dụng", true),
-    new Product(8, "Máy xay sinh tố", 850000, 0, "Gia dụng", false)
+    new Product(8, "Máy xay sinh tố", 850000, 0, "Gia dụng", false),
+    new Product(9, "Chuột Logitech G502", 1200000, 20, "Accessories", true),
+    new Product(10, "Bàn phím cơ AKKO", 1500000, 15, "Accessories", true)
 ];
 
 // Hiển thị danh sách sản phẩm
@@ -92,4 +94,34 @@ if (hasExpensiveProduct) {
     });
 } else {
     console.log("✗ KHÔNG có sản phẩm nào có giá trên 30.000.000 VNĐ");
+}
+
+// ========== CÂU 6: Kiểm tra tất cả sản phẩm Accessories có đang được bán (isAvailable = true) ==========
+
+// 1. Lọc ra các sản phẩm thuộc danh mục "Accessories"
+let accessoriesProducts = products.filter(function (product) {
+    return product.category === "Accessories";
+});
+
+// 2. Kiểm tra xem tất cả có isAvailable === true không
+let allAccessoriesAvailable = accessoriesProducts.every(function (product) {
+    return product.isAvailable === true;
+});
+
+console.log("\n=== KIỂM TRA DANH MỤC ACCESSORIES ===\n");
+
+if (accessoriesProducts.length > 0) {
+    if (allAccessoriesAvailable) {
+        console.log("✓ TẤT CẢ sản phẩm thuộc danh mục 'Accessories' đều đang được bán.");
+    } else {
+        console.log("✗ CÓ sản phẩm thuộc danh mục 'Accessories' đang ngừng bán.");
+    }
+
+    // Hiển thị chi tiết để kiểm chứng
+    console.log("\nChi tiết danh mục Accessories:");
+    accessoriesProducts.forEach(function (p) {
+        console.log(`- ${p.name}: ${p.isAvailable ? "Đang bán" : "Ngừng bán"}`);
+    });
+} else {
+    console.log("! Không tìm thấy sản phẩm nào thuộc danh mục 'Accessories'.");
 }
