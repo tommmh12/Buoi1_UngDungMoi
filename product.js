@@ -52,3 +52,44 @@ console.log("\n=== HIỂN THỊ CHI TIẾT ===\n");
 productNamePrice.forEach(function (item, index) {
     console.log(`${index + 1}. ${item.name} - ${item.price.toLocaleString('vi-VN')} VNĐ`);
 });
+
+// ========== CÂU 4: Lọc sản phẩm còn hàng trong kho (quantity > 0) ==========
+
+let productsInStock = products.filter(function (product) {
+    return product.quantity > 0;
+});
+
+// Hiển thị kết quả
+console.log("\n=== SẢN PHẨM CÒN HÀNG TRONG KHO ===\n");
+console.log(`Tổng số sản phẩm còn hàng: ${productsInStock.length}/${products.length}\n`);
+
+productsInStock.forEach(function (product, index) {
+    console.log(`${index + 1}. ${product.name}`);
+    console.log(`   - Tồn kho: ${product.quantity} sản phẩm`);
+    console.log(`   - Giá: ${product.price.toLocaleString('vi-VN')} VNĐ`);
+    console.log("");
+});
+
+// ========== CÂU 5: Kiểm tra có sản phẩm giá trên 30.000.000 ==========
+
+let hasExpensiveProduct = products.some(function (product) {
+    return product.price > 30000000;
+});
+
+console.log("\n=== KIỂM TRA SẢN PHẨM GIÁ TRÊN 30 TRIỆU ===\n");
+
+if (hasExpensiveProduct) {
+    console.log("✓ CÓ ít nhất một sản phẩm có giá trên 30.000.000 VNĐ");
+
+    // Hiển thị các sản phẩm đó
+    let expensiveProducts = products.filter(function (product) {
+        return product.price > 30000000;
+    });
+
+    console.log(`\nDanh sách sản phẩm giá trên 30 triệu (${expensiveProducts.length} sản phẩm):\n`);
+    expensiveProducts.forEach(function (product, index) {
+        console.log(`${index + 1}. ${product.name} - ${product.price.toLocaleString('vi-VN')} VNĐ`);
+    });
+} else {
+    console.log("✗ KHÔNG có sản phẩm nào có giá trên 30.000.000 VNĐ");
+}
