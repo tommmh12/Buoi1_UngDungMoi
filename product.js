@@ -158,3 +158,24 @@ for (let property in firstProduct) {
     console.log(`Giá trị tương ứng: ${firstProduct[property]}`);
     console.log("---");
 }
+
+// Câu 10 Lấy danh sách tên các sản phẩm đang bán và còn hàng
+
+console.log("\n=== DANH SÁCH SẢN PHẨM ĐANG BÁN VÀ CÒN HÀNG ===\n");
+
+let availableProductNames = products
+    .filter(function (product) {
+        return product.isAvailable === true && product.quantity > 0;
+    })
+    .map(function (product) {
+        return product.name;
+    });
+
+console.log(`Tổng số sản phẩm đang bán và còn hàng: ${availableProductNames.length}\n`);
+
+availableProductNames.forEach(function (name, index) {
+    console.log(`${index + 1}. ${name}`);
+});
+
+console.log("\n=== Danh sách dạng mảng ===");
+console.log(availableProductNames);
