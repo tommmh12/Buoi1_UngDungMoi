@@ -134,3 +134,27 @@ let totalValue = products.reduce(function (accumulator, product) {
 
 console.log("\n=== TỔNG GIÁ TRỊ KHO HÀNG ===\n");
 console.log(`Tổng giá trị: ${totalValue.toLocaleString('vi-VN')} VNĐ`);
+
+// Câu 8 Dùng for...of duyệt mảng products và in ra: Tên sản phẩm - Danh mục - Trạng thái
+
+console.log("\n=== DUYỆT DANH SÁCH SẢN PHẨM (for...of) ===\n");
+
+for (let product of products) {
+    let status = product.isAvailable ? "Đang bán" : "Hết hàng";
+    console.log(`${product.name} - ${product.category} - ${status}`);
+}
+
+// Câu 9 Dùng for...in để: In ra tên thuộc tính, In ra giá trị tương ứng
+
+console.log("\n=== DUYỆT THUỘC TÍNH SẢN PHẨM (for...in) ===\n");
+
+// Lấy sản phẩm đầu tiên để minh họa
+let firstProduct = products[0];
+
+console.log(`Thông tin chi tiết sản phẩm: ${firstProduct.name}\n`);
+
+for (let property in firstProduct) {
+    console.log(`Tên thuộc tính: ${property}`);
+    console.log(`Giá trị tương ứng: ${firstProduct[property]}`);
+    console.log("---");
+}
