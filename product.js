@@ -125,3 +125,12 @@ if (accessoriesProducts.length > 0) {
 } else {
     console.log("! Không tìm thấy sản phẩm nào thuộc danh mục 'Accessories'.");
 }
+
+// ========== CÂU 7: Tính tổng giá trị kho hàng (price * quantity) ==========
+
+let totalValue = products.reduce(function (accumulator, product) {
+    return accumulator + (product.price * product.quantity);
+}, 0);
+
+console.log("\n=== TỔNG GIÁ TRỊ KHO HÀNG ===\n");
+console.log(`Tổng giá trị: ${totalValue.toLocaleString('vi-VN')} VNĐ`);
