@@ -33,3 +33,22 @@ products.forEach(function (product, index) {
     console.log(`   - Trạng thái: ${product.isAvailable ? "Đang bán" : "Hết hàng"}`);
     console.log("");
 });
+
+// ========== CÂU 3: Tạo mảng mới chỉ chứa name và price ==========
+
+let productNamePrice = products.map(function (product) {
+    return {
+        name: product.name,
+        price: product.price
+    };
+});
+
+// Hiển thị mảng mới
+console.log("=== MẢNG CHỈ CHỨA NAME VÀ PRICE ===\n");
+console.log(productNamePrice);
+
+// Hiển thị đẹp hơn
+console.log("\n=== HIỂN THỊ CHI TIẾT ===\n");
+productNamePrice.forEach(function (item, index) {
+    console.log(`${index + 1}. ${item.name} - ${item.price.toLocaleString('vi-VN')} VNĐ`);
+});
